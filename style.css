@@ -1,0 +1,260 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  background-color: black;
+  color: beige;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  color: gold;
+  text-align: center;
+  margin: 15px 0;
+}
+h1{background-color: chocolate;}
+
+.wedding-summary,
+.fashion-summary {
+  color: gold;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.table {
+  border: 5px solid chocolate;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.images-wedding {
+  height: 400px;
+  width: 23%;
+  margin-right: 10px;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.images-wedding:hover {
+  transform: scale(1.05);
+}
+
+.table-video {
+  border: 10px solid chocolate; 
+  border-radius: 30px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+video {
+  width: 80%;
+  border-radius: 20px;
+}
+
+.ul-types,
+.list {
+  color: chocolate;
+  margin-left: 20px;
+}
+
+.table-images1 {
+  border: 10px solid chocolate;
+  border-spacing: 0px;
+  width: 100%;
+  margin: 20px 0;
+  transition: transform 0.3s;
+}
+
+.images-fashion {
+  height: 300px;
+  width: 250px;
+  margin: 5px;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.images-fashion:hover {
+  transform: scale(1.08);
+}
+
+.kids-summary{
+  color: gold;
+  text-align: center;
+}
+.kid-table{
+   border: 10px solid chocolate; 
+  border-radius: 30px;
+  overflow: hidden;
+  text-align: center;
+  margin: 20px auto;
+  height: 150px;
+  width: 550px;
+
+}
+
+.kid-image{
+  height: 100% ;
+  width: 100%;
+  transition: transform 0.3s;
+}
+.kid-image:hover{
+  transform: scale(1.08);
+}
+
+.pre-summary{
+  color: gold;
+}
+.table-preimages {
+  border: 10px solid chocolate;
+  border-radius: 30px;
+  margin: 20px;
+  height: auto;
+  width: 100%;  
+}
+
+.pre-image1{
+  height:350px; 
+  width:350px;
+  border-radius:50%;
+  object-fit:cover;
+  transition: transform 0.3s;
+}
+.pre-image1:hover{
+  transform: scale(1.08);
+}
+
+.pre-image2{
+  height: 350px;;
+  width:250;
+  transition: transform 0.3s;
+}
+.pre-image2:hover{
+  transform: scale(1.08);
+}
+
+.birth-summary{
+  color: gold;
+}
+.table-birth{
+  border: 10px solid chocolate; 
+  border-radius: 30px;
+  text-align: center;
+  margin: 20px auto;
+}
+.birth-image1{
+   height:360px; width:460px;transition: transform 0.3s
+}
+.birth-image1:hover
+{
+transform: scale(1.08);
+}
+.birth-image2{
+   height:360px;width:460px;
+   transition: transform 0.3s
+}
+.birth-image2:hover
+{
+  transform: scale(1.08);
+}
+.package{
+  color: gold;
+}
+.charges{
+  color: chocolate;
+}
+
+ul {
+  list-style: disc inside; 
+  padding-left: 20px;
+}
+
+address {
+  margin: 20px;
+  color: beige;
+}
+
+address a {
+  color: gold;
+  text-decoration: none;
+}
+
+address a:hover {
+  text-decoration: underline;
+  color: yellowgreen;
+}
+
+.quote {
+  color: yellowgreen;
+  text-align: center;
+  margin-top: 15px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px;
+  background: slategray;
+}
+
+.footer-note {
+  color: red;
+  margin-top: 10px;
+}
+/* Mobile Responsive Settings */
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 22px;
+    padding: 8px;
+  }
+
+  .images-wedding,
+  .images-fashion,
+  .pre-image1,
+  .pre-image2,
+  .birth-image1,
+  .birth-image2 {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+  }
+
+  .kid-table {
+    width: 100%;
+    height: auto;
+  }
+
+  .table,
+  .table-video,
+  .table-images1,
+  .table-preimages,
+  .table-birth {
+    width: 100%;
+    border-width: 5px;
+  }
+
+  .list,
+  .ul-types,
+  .charges {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
+  footer {
+    font-size: 14px;
+    padding: 5px;
+  }
+}
