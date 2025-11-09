@@ -1,76 +1,256 @@
-/* Reset */
+/* ======================================================
+   🌟 1. GLOBAL RESET & DEFAULT STYLES
+   ====================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body */
 body {
-  background-color: black;
-  color: beige;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+  background: black;
+  text-decoration-color: antiquewhite;
+  animation: fadeIn 1.5s ease-in-out;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Headings */
-h1, h2, h3, h4 {
-  color: gold;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===============================
+   🌟 Navigation Bar
+   =============================== */
+.navibar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, chocolate, gold);
+  padding: 10px 20px;
+  border-radius: 5px;
+  animation: fadeDown 1.5s ease-in-out;
+}
+
+.left-side h1 {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 24px;
+  margin: 0;
+  animation: glow 3s infinite alternate;
+}
+
+.right-side a {
+  color: black;
+  margin-right: 12px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.right-side a:hover {
+  color: white;
+}
+
+.right-side .contactform {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 6px;
+  background: chocolate;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.right-side .contactform:hover {
+  background: gold;
+  color: white;
+  transform: scale(1.05);
+}
+/* ======================================================
+   🌟 CONTACT FORM POPUP — FINAL STABLE FIX
+   ====================================================== */
+
+/* Background overlay — hidden by default */
+.popup-bg {
+  display: none; /* keep hidden until user clicks CONTACT */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* below intro, above body */
+  overflow-y: auto;
+}
+
+/* Main popup box */
+.popup-box {
+  background: #fff;
+  color: #000;
+  padding: 35px;
+  border-radius: 10px;
+  width: 350px;
+  text-align: left;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+  position: relative;
+  animation: slideUp 0.4s ease;
+  border: 2px solid gold;
+  z-index: 10000;
+}
+
+/* Headings inside popup */
+.popup-box h2 {
   text-align: center;
-  margin: 15px 0;
+  color: #000;
+  font-size: 22px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid gold;
+  display: inline-block;
+  padding-bottom: 4px;
 }
-h1{background-color: chocolate;}
 
-.wedding-summary,
-.fashion-summary {
+.popup-box p {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* Contact form layout */
+.popup-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Input fields and textarea */
+.popup-box input,
+.popup-box textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  background-color: #fff;
+  transition: 0.3s ease;
+}
+
+.popup-box input:focus,
+.popup-box textarea:focus {
+  border-color: gold;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+.popup-box textarea {
+  resize: none;
+  min-height: 100px;
+  color: #222;
+}
+
+/* Send Button */
+.submit-contact {
+  background: linear-gradient(90deg, gold, chocolate);
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+}
+
+.submit-contact:hover {
+  background: linear-gradient(90deg, chocolate, gold);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: red;
+  transform: scale(1.2);
+}
+
+/* Animation */
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .popup-box {
+    width: 90%;
+    padding: 25px;
+  }
+  .popup-box h2 {
+    font-size: 20px;
+  }
+  .popup-box p {
+    font-size: 13px;
+  }
+  .submit-contact {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+/* ======================================================
+   🌟 4. PHOTOGRAPHY SECTIONS
+   ====================================================== */
+#fresh {
+  color: gold;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.8rem;
+  margin-left: 30px; /* spacing from left edge */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+   .wedding-summary,
+.fashion-summary,
+.kids-summary,
+.pre-summary,
+.birth-summary {
   color: gold;
   font-weight: bold;
   cursor: pointer;
-  text-decoration: underline;
+  text-align: left;
 }
 
-.table {
-  border: 5px solid chocolate;
-  width: 100%;
-  margin: 20px 0;
-}
-
-.images-wedding {
+.images-wedding
+ {
   height: 400px;
   width: 23%;
   margin-right: 10px;
   border-radius: 12px;
   transition: transform 0.3s;
 }
-
 .images-wedding:hover {
   transform: scale(1.05);
-}
-
-.table-video {
-  border: 10px solid chocolate; 
-  border-radius: 30px;
-  text-align: center;
-  margin: 20px auto;
-}
-
-video {
-  width: 80%;
-  border-radius: 20px;
-}
-
-.ul-types,
-.list {
-  color: chocolate;
-  margin-left: 20px;
-}
-
-.table-images1 {
-  border: 10px solid chocolate;
-  border-spacing: 0px;
-  width: 100%;
-  margin: 20px 0;
-  transition: transform 0.3s;
 }
 
 .images-fashion {
@@ -80,137 +260,81 @@ video {
   border-radius: 12px;
   transition: transform 0.3s;
 }
-
 .images-fashion:hover {
   transform: scale(1.08);
+}.kid-image {
+  width: 22%;               /* keeps 4 per row */
+  height: auto;             /* natural height */
+  aspect-ratio: 1 / 1;      /* perfect square like Instagram */
+  margin: 10px;
+  border-radius: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;      /* shows full image */
+  object-position: center;
+  background-color: #000;   /* fills space if not full */
+  transition: transform 0.3s ease;
 }
 
-.kids-summary{
-  color: gold;
-  text-align: center;
-}
-.kid-table{
-   border: 10px solid chocolate; 
-  border-radius: 30px;
-  overflow: hidden;
-  text-align: center;
-  margin: 20px auto;
-  height: 150px;
-  width: 550px;
-
+.kid-image:hover {
+  transform: scale(1.05);
 }
 
-.kid-image{
-  height: 100% ;
-  width: 100%;
+
+
+
+.pre-image1 {
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
+  object-fit: cover;
   transition: transform 0.3s;
 }
-.kid-image:hover{
+.pre-image1:hover {
+  transform: scale(1.08);
+}
+.pre-image2 {
+  width: 580px !important;   /* a bit smaller than 500px for balance */
+  height: 320px !important;  /* adds nice height */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* optional: adds a soft shadow */
+}
+.pre-image2:hover {
   transform: scale(1.08);
 }
 
-.pre-summary{
-  color: gold;
-}
-.table-preimages {
-  border: 10px solid chocolate;
-  border-radius: 30px;
-  margin: 20px;
-  height: auto;
-  width: 100%;  
-}
-
-.pre-image1{
-  height:350px; 
-  width:350px;
-  border-radius:50%;
-  object-fit:cover;
+.birth-image1,
+.birth-image2 {
+  height: 360px;
+  width: 460px;
   transition: transform 0.3s;
 }
-.pre-image1:hover{
+.birth-image1:hover,
+.birth-image2:hover {
   transform: scale(1.08);
 }
 
-.pre-image2{
-  height: 350px;;
-  width:250;
-  transition: transform 0.3s;
-}
-.pre-image2:hover{
-  transform: scale(1.08);
-}
-
-.birth-summary{
-  color: gold;
-}
-.table-birth{
-  border: 10px solid chocolate; 
-  border-radius: 30px;
-  text-align: center;
-  margin: 20px auto;
-}
-.birth-image1{
-   height:360px; width:460px;transition: transform 0.3s
-}
-.birth-image1:hover
-{
-transform: scale(1.08);
-}
-.birth-image2{
-   height:360px;width:460px;
-   transition: transform 0.3s
-}
-.birth-image2:hover
-{
-  transform: scale(1.08);
-}
-.package{
-  color: gold;
-}
-.charges{
-  color: chocolate;
-}
-
-ul {
-  list-style: disc inside; 
-  padding-left: 20px;
-}
-
-address {
-  margin: 20px;
-  color: beige;
-}
-
-address a {
-  color: gold;
-  text-decoration: none;
-}
-
-address a:hover {
-  text-decoration: underline;
-  color: yellowgreen;
-}
-
-.quote {
-  color: yellowgreen;
-  text-align: center;
-  margin-top: 15px;
-}
-
+/* ======================================================
+   🌟 5. FOOTER SECTION
+   ====================================================== */
 footer {
   text-align: center;
   margin-top: 30px;
   padding: 10px;
-  background: slategray;
+  background: linear-gradient(to right, slategray, black);
+  animation: fadeUp 2s ease-in-out;
+  border-radius: 10px;
 }
 
 .footer-note {
   color: red;
   margin-top: 10px;
 }
-/* Mobile Responsive Settings */
-@media (max-width: 768px) {
 
+/* ======================================================
+   🌟 6. RESPONSIVE DESIGN
+   ====================================================== */
+@media (max-width: 768px) {
   h1 {
     font-size: 22px;
     padding: 8px;
@@ -232,29 +356,96 @@ footer {
     height: auto;
   }
 
-  .kid-table {
-    width: 100%;
-    height: auto;
-  }
-
-  .table,
-  .table-video,
-  .table-images1,
-  .table-preimages,
-  .table-birth {
-    width: 100%;
-    border-width: 5px;
-  }
-
-  .list,
-  .ul-types,
-  .charges {
-    font-size: 14px;
-    margin-left: 10px;
-  }
-
   footer {
     font-size: 14px;
     padding: 5px;
+  }
+
+  .popup-box {
+    width: 90%;
+  }
+}
+
+/* ======================================================
+   🌟 7. INTRO OVERLAY ANIMATION
+   ====================================================== */
+#intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  z-index: 9999;
+  color: #d4af37;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  text-align: center;
+  animation: intro-fade 3s forwards;
+}
+
+#intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.15) 45%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: translateX(-120%);
+  animation: intro-shine 3s ease-in-out 1s infinite;
+  pointer-events: none;
+}
+
+@keyframes intro-fade {
+  0% { opacity: 1; visibility: visible; }
+  90% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes intro-shine {
+  0% { transform: translateX(-120%); }
+  50% { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+/* Smooth center fade upgrade */
+.popup-bg {
+  animation: fadeCenter 0.5s ease-in-out;
+}
+
+@keyframes fadeCenter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* ======================================================
+   🌟 GOLD GLOW BORDER ANIMATION FOR CONTACT POPUP
+   ====================================================== */
+.popup-box {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+  border: 2px solid gold;
+  animation: glowGold 2s infinite alternate;
+}
+
+@keyframes glowGold {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4),
+                0 0 30px rgba(255, 215, 0, 0.2);
+    border-color: #d4af37;
+  }
+  100% {
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.9),
+                0 0 60px rgba(255, 215, 0, 0.6);
+    border-color: gold;
   }
 }
