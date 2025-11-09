@@ -3,160 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VISHNUPHOTOGRAPHY</title>
-  <link rel="stylesheet" href="style.css">
+  <title>VISHNU PHOTOGRAPHY</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
-  <div><h1><i>vishnu photography</i></h1></div>
 
+  <!-- ===============================
+       Intro Animation
+  ================================ -->
+  <div id="intro">VISHNU PHOTOGRAPHY</div>
+
+  <!-- ===============================
+     Navigation Bar
+  ================================ -->
+  <div class="navibar">
+
+    <!-- Left Side -->
+    <div class="left-side">
+      <h1>VISHNU PHOTOGRAPHY</h1>
+    </div>
+
+    <!-- Right Side -->
+    <div class="right-side">
+      <a href="https://wa.me/916302126625" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/_vishnuvardhan_0987" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/yourlink" target="_blank"><i class="fab fa-facebook"></i></a>
+      <button class="contactform" onclick="openForm()">CONTACT</button>
+    </div>
+
+  </div>
+
+
+  <!-- ===============================
+     CONTACT FORM POPUP
+=============================== -->
+<div class="popup-bg" id="popupForm">
+  <div class="popup-box">
+    <span class="close-btn" onclick="closeForm()">&times;</span>
+    <h2>Get In Touch</h2>
+    <p>If you want to get in touch, you can email me at 
+      <b>vishnuphotography@gmail.com</b> or fill out the contact form below.
+    </p>
+
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Your Phone Number" required>
+      <textarea name="message" placeholder="Your Message..." required></textarea>
+      <button type="submit" class="submit-contact">Send</button>
+    </form>
+  </div>
+</div>
+
+  <!-- ===============================
+       Main Sections
+  ================================ -->
+
+
+
+  <h2 id="fresh"> <br>Our Lens’s Latest Magic</h2>
+
+  <!-- Wedding Photography -->
   <details>
-    <summary class="wedding-summary"><i><b><u>WEDDING PHOTOGRAPHY<br>click here</u></b></i></summary>
-    <ul class="list">
-      <li>Traditional Wedding Photography</li> 
-      <li>Candid Wedding Photography</li>
-      <li>Photojournalistic / Documentary Style</li>
-      <li>Portrait Wedding Photography</li>
-      <li>Fine-Art / Creative Wedding Photography</li> 
-      <li>Black & White Wedding Photography</li>
-      <li>Drone Wedding Photography</li>
-      <li>Cinematic Wedding Photography</li>
-    </ul>
+    <summary class="wedding-summary"><b><i>WEDDING PHOTOGRAPHY</i></b></summary>
+    <marquee behavior="scroll" direction="left" scrollamount="30">
+      <img src="https://vjrishiphotography.com/_next/static/media/13.b9dfb263.jpg" alt="Wedding 1" class="images-wedding">
+      <img src="https://vjrishiphotography.com/_next/static/media/9.afe00327.jpg" alt="Wedding 2" class="images-wedding">
+      <img src="https://vjrishiphotography.com/_next/static/media/2.ddf1faad.jpg" alt="Wedding 3" class="images-wedding">
+      <img src="https://vjrishiphotography.com/_next/static/media/14.c924b9cd.jpg" alt="Wedding 4" class="images-wedding">
+      <img src="https://vjrishiphotography.com/_next/static/media/8.eb4906ff.jpg" alt="Wedding 5" class="images-wedding">
+      <img src="https://vjrishiphotography.com/_next/static/media/10.6dbf37ef.jpg" alt="Wedding 6" class="images-wedding">
+      <img src="https://vjrishiphotography.com/_next/static/media/12.6ddcc71c.jpg" alt="Wedding 7" class="images-wedding">
+    </marquee>
   </details>
 
-  <table class="table">
-    <tr>
-      <th>
-        <marquee behavior="scroll" direction="left" scrollamount="15"> 
-          <img src="https://vjrishiphotography.com/_next/static/media/13.b9dfb263.jpg" alt="wedding photography" class="images-wedding">
-          <img src="https://vjrishiphotography.com/_next/static/media/9.afe00327.jpg" alt="wedding photography" class="images-wedding">
-          <img src="https://vjrishiphotography.com/_next/static/media/2.ddf1faad.jpg" alt="wedding photography" class="images-wedding">
-          <img src="https://vjrishiphotography.com/_next/static/media/14.c924b9cd.jpg" alt="wedding photography" class="images-wedding">
-          <img src="https://vjrishiphotography.com/_next/static/media/8.eb4906ff.jpg"alt="wedding photography"class="images-wedding">
-          <img src="https://vjrishiphotography.com/_next/static/media/10.6dbf37ef.jpg"alt="wedding photography"class="images-wedding">
-            <img src="https://vjrishiphotography.com/_next/static/media/12.6ddcc71c.jpg"alt="wedding photography"class="images-wedding">
-        </marquee>
-      </th>
-    </tr>
-  </table>
-
-  <h4><i><b><u>WEDDING VIDEOGRAPHY</u></b></i></h4>
-  <table class="table-video">
-    <tr><th>
-      <video src="./WhatsApp Video 2025-08-20 at 4.25.48 PM.mp4" autoplay loop muted controls></video>
-    </th></tr>
-  </table>
-
+  <!-- Fashion Photography -->
   <details>
-    <summary class="fashion-summary"><i><b><u>FASHION PHOTOGRAPHY:<br>click here</u></b></i></summary>
-    <ul class="ul-types"> 
-      <li>EDITORIAL FASHION PHOTOGRAPHY</li>
-      <li>HIGH FASHION PHOTOGRAPHY</li>
-      <li>STREET FASHION PHOTOGRAPHY</li>
-      <li>CATALOG FASHION PHOTOGRAPHY</li>
-      <li>RUNWAY FASHION PHOTOGRAPHY</li>
-      <li>GLAMOUR FASHION PHOTOGRAPHY</li>
-      <li>COMMERCIAL FASHION PHOTOGRAPHY</li>
-      <li>STREET STYLE/ URBAN PHOTOGRAPHY</li>
-      <li>FITNESS FASHION PHOTOGRAPHY</li>
-      <li>BEAUTY / MAKEUP PHOTOGRAPHY</li>
-    </ul>
+    <summary class="fashion-summary"><b><i>FASHION PHOTOGRAPHY</i></b></summary>
+    <marquee behavior="scroll" direction="right" scrollamount="20">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFb9Yc_kGKvR3mCKUkGDFkYIhTTs-ZdRkc_A&s" alt="Fashion 1" class="images-fashion">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSckRaecnirO8n3-g3cXP7YbybS6pwlieoJkQ&s" alt="Fashion 2" class="images-fashion">
+      <img src="https://cdn.pixabay.com/photo/2023/06/01/09/14/woman-8033246_1280.png" alt="Fashion 3" class="images-fashion">
+    </marquee>
   </details>
 
-  <table class="table-images1">
-    <tr><th>
-      <marquee behavior="scroll" direction="right" scrollamount="20">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFb9Yc_kGKvR3mCKUkGDFkYIhTTs-ZdRkc_A&s" alt="fashion photography" class="images-fashion">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSckRaecnirO8n3-g3cXP7YbybS6pwlieoJkQ&s" alt="trending photography" class="images-fashion">
-        <video height="300px" width="26%" src="./WhatsApp Video 2025-08-20 at 4.49.57 PM.mp4" autoplay loop muted controls></video>
-        <img src="./Screenshot (6).png" alt="fashion photography" class="images-fashion">
-        <img src="./Screenshot (7).png" alt="fashion photography" class="images-fashion">
-        <img src="./Screenshot (9).png" alt="fashion photography" class="images-fashion">
-        <img src="./Screenshot (10).png" alt="fashion photography" class="images-fashion">
-      </marquee>
-    </th></tr>
-  </table>
+  <!-- Kids Photography -->
+  <!-- ===============================
+     🌟 KIDS PHOTOGRAPHY SECTION
+=============================== -->
+<details>
+    <summary class="kids-summary"><b>KIDS PHOTOGRAPHY</b></summary>
+    <details open>
+  <div class="kids-container">
+    <img class="kid-image" src="https://www.parents.com/thmb/--pZafKsgGSb8NrJVrV7lqJId9g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/BirthdayParty-GettyImages-1600792233-c2a961509556414f9f41b92b8471a551.jpg" alt="Kids 1">
+    <img class="kid-image" src="https://media.istockphoto.com/id/1353379172/photo/cute-little-african-american-girl-looking-at-camera.jpg?s=612x612&w=0&k=20&c=RCOYytwS2nMGfEb80oyeiCcIiqMQu6wnTluAaxMBye4=" alt="Kids 2">
+    <img class="kid-image" src="https://img.freepik.com/free-photo/school-friends_1098-15925.jpg?semt=ais_hybrid&w=740&q=80" alt="Kids 3">
+    <img class="kid-image" src="https://cdn.firstcry.com/education/2023/01/31204054/Teaching-Process-Art-To-Kids-Benefits-and-Activities.jpg" alt="Kids 4">
+  </div>
+</details>
 
-  <details>
-    <summary  class="kids-summary"><u><b>KIDS PHOTOGRAPHY:<br>click here</b></u></summary>          
-    <ul class="list">
-      <li>Newborn Photography</li>
-      <li>Infant Photography</li>
-      <li>Toddler Photography</li>
-      <li>Birthday / Cake Smash Photography</li>
-      <li>Lifestyle Kids Photography</li>
-      <li>Candid Kids Photography</li>
-      <li>Portrait Kids Photography</li>
-      <li>Themed / Concept Kids Photography</li>
-      <li>Outdoor Kids Photography</li>
-      <li>Family & Sibling Photography</li>
-    </ul>
-  </details>
-<table class="kid-table"><tr><td>
-  <img class="kid-image"  src="https://content.jdmagicbox.com/v2/comp/jaipur/u8/0141px141.x141.160930161651.l5u8/catalogue/rss-lab-by-manoj-tank-vaishali-nagar-jaipur-photo-studios-a2w648tm1x.jpg" alt="kids photography">
-</td></tr> </table>
-  <details>
-    <summary class="pre-summary"><u><b>PRE WEEDDING<br>click here</b></u></summary>
-    <ul class="list">
-      <li>Traditional Pre-Wedding Photography</li>
-      <li>Candid Pre-Wedding Photography</li>
-      <li>Themed / Concept Pre-Wedding Photography</li>
-      <li>Outdoor / Destination Pre-Wedding Photography</li>
-      <li>Studio Pre-Wedding Photography</li>
-      <li>Cinematic Pre-Wedding Photography</li>
-      <li>Casual / Lifestyle Pre-Wedding Photography</li>
-      <li>Drone Pre-Wedding Photography</li>
-      <li>Creative / Artistic Pre-Wedding Photography</li>
-      <li>Black & White Pre-Wedding Photography</li>
-    </ul>
-  </details>
-<table class="table-preimages"><tr><td>
-  <marquee behavior="scroll" direction="right" scrollamount="20">
-    <img class="pre-image1"src="https://i.pinimg.com/736x/2b/b3/77/2bb3771d25b7ab874f81571c527aa468.jpg"  alt="pre wedding photography">  
-    <img class="pre-image2"src="https://i.ytimg.com/vi/ccQRMAozxmQ/hq720.jpg" alt="pre wedding photography">
-  </marquee></td></tr></table>
+</details>
 
+    </details>
+
+
+  <!-- Pre Wedding -->
   <details>
-    <summary  class="birth-summary"><i><u>BIRTHDAY PHOTOSHOOTS:<br>click here</u></i></summary>
-    <ul class="list">
-      <li>Candid Birthday Photography</li>
-      <li>Traditional Birthday Photography</li>
-      <li>Cake Smash Photography</li>
-      <li>Theme-Based Birthday Photography</li>
-      <li>Outdoor Birthday Photography</li>
-      <li>Event Coverage Birthday Photography</li>
-      <li>Family & Friends Birthday Photography</li>
-      <li>Creative / Artistic Birthday Photography</li>
-      <li>Portrait Birthday Photography</li>
-      <li>Drone Birthday Photography</li>
-    </ul>
+    <summary class="pre-summary"><b>PRE WEDDING</b></summary>
+    <marquee behavior="scroll" direction="right" scrollamount="20">
+      <img class="pre-image1" src="https://i.pinimg.com/736x/2b/b3/77/2bb3771d25b7ab874f81571c527aa468.jpg" alt="Pre Wedding 1">
+      <img class="pre-image2" src="https://i.ytimg.com/vi/ccQRMAozxmQ/hq720.jpg" alt="Pre Wedding 2">
+    </marquee>
   </details>
 
-        <table class="table-birth"><tr><td><marquee behavior="scroll" direction="left" scrollamount="15"> 
-          <img class="birth-image1"src="https://rosefilmz.com/wp-content/uploads/elementor/thumbs/0-138-scaled-qa413mm9fcb9xw3jcvzq0f3iybi4dto17jkl1j2ot8.jpg" alt="birthday shoots">
-          <img class="birth-image2"src="https://media.istockphoto.com/id/2218339062/photo/group-of-friends-celebrating-a-birthday-with-a-decorated-cake-and-sparklers-in-a-joyful-party.jpg?s=612x612&w=0&k=20&c=0TGdLMASt-ycNwMsJ-RPAfBBU3TmDK7auk-RJF2GqQM="alt="birthday photoshoot">
-</marquee></td></tr></table>
+  <!-- Birthday Photoshoots -->
   <details>
-    <summary class="package">Click to see Photography Packages</summary>
-    <ul  class="charges">
-    <li>Wedding Package: ₹50,000</li>
-    <li>Birthday Package: ₹15,000</li>
-    <li>Fashion Shoot: ₹30,000</li>
-  </ul>
+    <summary class="birth-summary"><b><i>BIRTHDAY PHOTOSHOOTS</i></b></summary>
+    <marquee behavior="scroll" direction="left" scrollamount="15">
+      <img class="birth-image1" src="https://rosefilmz.com/wp-content/uploads/elementor/thumbs/0-138-scaled-qa413mm9fcb9xw3jcvzq0f3iybi4dto17jkl1j2ot8.jpg" alt="Birthday 1">
+      <img class="birth-image2" src="https://media.istockphoto.com/id/2218339062/photo/group-of-friends-celebrating-a-birthday-with-a-decorated-cake-and-sparklers-in-a-joyful-party.jpg?s=612x612&w=0&k=20&c=0TGdLMASt-ycNwMsJ-RPAfBBU3TmDK7auk-RJF2GqQM=" alt="Birthday 2">
+    </marquee>
   </details>
 
-  <address>
-    <h3>CONTACT DETAILS</h3>
-    *Whatsapp :- 6302126625<br>
-    *Instagram:- <a href="https://www.instagram.com/_vishnuvardhan_0987">@_vishnuvardhan_0987</a><br>
-    *Facebook:- <a href="https://www.facebook.com/profile.php?id=100081756737101&mibextid=rS40aB7S9Ucbxw6v">Vishnu Vardhan Pidepally</a>
-  </address>
-                        
-  <h4 class="quote">TAKING PICTURES IS SAVOURING LIFE INTENSELY EVERY HUNDREDTH OF A SECOND.</h4>
-  <h5 class="quote"><em>A PICTURE IS A POEM WITHOUT WORDS</em></h5>                             
 
+
+  <!-- Footer -->
   <footer>
-    <h3><b>THANK YOU VISIT AGAIN</b></h3>
-    <p class="footer-note"><i>VISHNU PHOTOGRAPHY<br>credits:-vj rishi photography</i></p>
-  </footer>
+    <h3>THANK'S FOR VISITING!</h3>
+    <p class="footer-note"><i>VISHNU PHOTOGRAPHY<br>credits:- vj rishi photography</i></p>
+  </footer>rtt
+
+  <!-- ===============================
+       Scripts
+  ================================ -->
+  <script>
+    // Intro hide
+    setTimeout(() => {
+      document.getElementById("intro").style.display = "none";
+    }, 3000);
+
+    // Contact form show/hide
+    function openForm() {
+      document.getElementById("popupForm").style.display = "flex";
+    }
+    function closeForm() {
+      document.getElementById("popupForm").style.display = "none";
+    }
+  document.querySelectorAll("details").forEach(d => d.open = true);
+</script>
+
+  </script>
+
+
 </body>
 </html>
