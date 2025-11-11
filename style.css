@@ -334,12 +334,42 @@ footer {
 /* ======================================================
    🌟 6. RESPONSIVE DESIGN
    ====================================================== */
+/* ======================================================
+   🌟 6. RESPONSIVE DESIGN — FIXED NAVBAR ALIGNMENT
+   ====================================================== */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 22px;
-    padding: 8px;
+  /* Adjust navbar for small screens */
+  .navibar {
+    flex-wrap: wrap; /* allow wrapping when needed */
+    justify-content: space-between;
+    padding: 10px;
   }
 
+  .left-side h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .right-side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 100%; /* ensures full width on mobile */
+  }
+
+  .right-side a {
+    font-size: 16px;
+    margin-right: 0;
+  }
+
+  .right-side .contactform {
+    font-size: 15px;
+    padding: 8px 14px;
+  }
+
+  /* Image sections */
   .images-wedding,
   .images-fashion,
   .pre-image1,
@@ -351,6 +381,11 @@ footer {
     margin: 10px 0;
   }
 
+  .kid-image {
+    width: 45%;
+    margin: 8px;
+  }
+
   video {
     width: 100%;
     height: auto;
@@ -358,13 +393,14 @@ footer {
 
   footer {
     font-size: 14px;
-    padding: 5px;
+    padding: 6px;
   }
 
   .popup-box {
     width: 90%;
   }
 }
+
 
 /* ======================================================
    🌟 7. INTRO OVERLAY ANIMATION
