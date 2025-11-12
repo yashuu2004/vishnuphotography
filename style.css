@@ -12,6 +12,7 @@ body {
   text-decoration-color: antiquewhite;
   animation: fadeIn 1.5s ease-in-out;
   font-family: 'Poppins', sans-serif;
+  color: white;
 }
 
 @keyframes fadeIn {
@@ -30,6 +31,7 @@ body {
   padding: 10px 20px;
   border-radius: 5px;
   animation: fadeDown 1.5s ease-in-out;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
 .left-side h1 {
@@ -45,11 +47,16 @@ body {
   color: black;
   margin-right: 12px;
   font-size: 20px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
-.right-side a:hover {
+.right-side a i {
+  transition: all 0.3s ease;
+}
+
+.right-side a:hover i {
   color: white;
+  text-shadow: 0 0 10px gold, 0 0 20px gold;
 }
 
 .right-side .contactform {
@@ -69,13 +76,12 @@ body {
   color: white;
   transform: scale(1.05);
 }
-/* ======================================================
-   🌟 CONTACT FORM POPUP — FINAL STABLE FIX
-   ====================================================== */
 
-/* Background overlay — hidden by default */
+/* ======================================================
+   🌟 CONTACT FORM POPUP
+   ====================================================== */
 .popup-bg {
-  display: none; /* keep hidden until user clicks CONTACT */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -84,11 +90,11 @@ body {
   background: rgba(0, 0, 0, 0.85);
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* below intro, above body */
+  z-index: 9999;
   overflow-y: auto;
+  animation: fadeCenter 0.5s ease-in-out;
 }
 
-/* Main popup box */
 .popup-box {
   background: #fff;
   color: #000;
@@ -97,13 +103,10 @@ body {
   width: 350px;
   text-align: left;
   box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-  position: relative;
-  animation: slideUp 0.4s ease;
   border: 2px solid gold;
-  z-index: 10000;
+  animation: glowGold 2s infinite alternate;
 }
 
-/* Headings inside popup */
 .popup-box h2 {
   text-align: center;
   color: #000;
@@ -122,14 +125,12 @@ body {
   line-height: 1.4;
 }
 
-/* Contact form layout */
 .popup-box form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* Input fields and textarea */
 .popup-box input,
 .popup-box textarea {
   width: 100%;
@@ -139,7 +140,6 @@ body {
   font-size: 15px;
   font-family: 'Poppins', sans-serif;
   outline: none;
-  background-color: #fff;
   transition: 0.3s ease;
 }
 
@@ -155,7 +155,6 @@ body {
   color: #222;
 }
 
-/* Send Button */
 .submit-contact {
   background: linear-gradient(90deg, gold, chocolate);
   color: black;
@@ -167,7 +166,6 @@ body {
   transition: 0.3s ease-in-out;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
 }
 
 .submit-contact:hover {
@@ -176,7 +174,6 @@ body {
   box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
 }
 
-/* Close Button */
 .close-btn {
   position: absolute;
   top: 8px;
@@ -193,30 +190,6 @@ body {
   transform: scale(1.2);
 }
 
-/* Animation */
-@keyframes slideUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-  .popup-box {
-    width: 90%;
-    padding: 25px;
-  }
-  .popup-box h2 {
-    font-size: 20px;
-  }
-  .popup-box p {
-    font-size: 13px;
-  }
-  .submit-contact {
-    font-size: 15px;
-    padding: 10px;
-  }
-}
-
 /* ======================================================
    🌟 4. PHOTOGRAPHY SECTIONS
    ====================================================== */
@@ -225,227 +198,90 @@ body {
   font-weight: bold;
   text-align: left;
   font-size: 1.8rem;
-  margin-left: 30px; /* spacing from left edge */
+  margin-left: 30px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-   .wedding-summary,
-.fashion-summary,
-.kids-summary,
-.pre-summary,
-.birth-summary {
+summary {
   color: gold;
   font-weight: bold;
   cursor: pointer;
   text-align: left;
+  transition: 0.3s ease;
 }
 
-.images-wedding
- {
-  height: 400px;
-  width: 23%;
-  margin-right: 10px;
-  border-radius: 12px;
-  transition: transform 0.3s;
-}
-.images-wedding:hover {
-  transform: scale(1.05);
+summary:hover {
+  text-decoration: underline;
+  text-decoration-color: gold;
 }
 
-.images-fashion {
-  height: 300px;
-  width: 250px;
-  margin: 5px;
-  border-radius: 12px;
-  transition: transform 0.3s;
-}
-.images-fashion:hover {
-  transform: scale(1.08);
-}.kid-image {
-  width: 22%;               /* keeps 4 per row */
-  height: auto;             /* natural height */
-  aspect-ratio: 1 / 1;      /* perfect square like Instagram */
-  margin: 10px;
-  border-radius: 12px;
-  display: inline-block;
-  vertical-align: middle;
-  object-fit: contain;      /* shows full image */
-  object-position: center;
-  background-color: #000;   /* fills space if not full */
-  transition: transform 0.3s ease;
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  background: black;
+  margin: 20px 0;
 }
 
-.kid-image:hover {
-  transform: scale(1.05);
+.slider-track {
+  display: flex;
+  gap: 12px;
+  will-change: transform;
 }
 
-
-
-
-.pre-image1 {
-  height: 350px;
-  width: 350px;
-  border-radius: 50%;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
-.pre-image1:hover {
-  transform: scale(1.08);
-}
-.pre-image2 {
-  width: 580px !important;   /* a bit smaller than 500px for balance */
-  height: 320px !important;  /* adds nice height */
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* optional: adds a soft shadow */
-}
-.pre-image2:hover {
-  transform: scale(1.08);
-}
-
-.birth-image1,
-.birth-image2 {
+.slider-img {
+  width: 260px;
   height: 360px;
-  width: 460px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  opacity: 0;
+  animation: fadeSlide 1.5s ease forwards;
   transition: transform 0.3s;
 }
-.birth-image1:hover,
-.birth-image2:hover {
-  transform: scale(1.08);
+
+.slider-img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* ======================================================
-   🌟 5. FOOTER SECTION
+   🌟 FOOTER
    ====================================================== */
 footer {
   text-align: center;
   margin-top: 30px;
-  padding: 10px;
-  background: linear-gradient(to right, slategray, black);
-  animation: fadeUp 2s ease-in-out;
+  padding: 15px;
+  background: linear-gradient(90deg, black, gold, chocolate, black);
   border-radius: 10px;
+  color: white;
+  box-shadow: 0 -4px 15px rgba(255, 215, 0, 0.3);
 }
 
 .footer-note {
   color: red;
   margin-top: 10px;
 }
+
 /* ======================================================
-   🌟 6. RESPONSIVE DESIGN (FULLY FIXED)
+   🌟 FACT POPUP (Random Fact)
    ====================================================== */
-/* ======================================================
-   🌟 FULL MOBILE FIX (Navbar + Images)
-   ====================================================== */
-@media (max-width: 768px) {
-
-  /* 🟧 Navbar — Perfect alignment and spacing */
-  .navibar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(to right, chocolate, gold);
-    padding: 10px 15px;
-    flex-wrap: nowrap;
-    border-radius: 0;
-  }
-
-  .left-side h1 {
-    font-size: 18px;
-    margin: 0;
-    white-space: nowrap;
-  }
-
-  .right-side {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-
-  .right-side a i {
-    font-size: 20px; /* equal icon size */
-    line-height: 1; /* keeps icons centered */
-    vertical-align: middle;
-    color: black;
-    transition: color 0.3s;
-  }
-
-  .right-side a i:hover {
-    color: white;
-  }
-
-  .contactform {
-    padding: 5px 10px;
-    font-size: 13px;
-    border-radius: 6px;
-    background: chocolate;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-  }
-
-  /* 🟨 Image Fix — All look equal on mobile */
-  .images-wedding,
-  .images-fashion,
-  .pre-image1,
-  .pre-image2,
-  .birth-image1,
-  .birth-image2 {
-    width: 100%;
-    height: auto;
-    margin: 8px 0;
-  }
-
-  .images-wedding,
-  .images-fashion {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-  }
-
-  .images-wedding img,
-  .images-fashion img,
-  .pre-image1,
-  .pre-image2,
-  .birth-image1,
-  .birth-image2 {
-    flex: 0 0 auto;
-    width: 70%;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  /* 🧒 Kids Photos — two per row */
-  .kids-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .kid-image {
-    width: 48%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  /* 🟫 Footer */
-  footer {
-    font-size: 14px;
-    padding: 10px;
-  }
+.fact-popup {
+  animation: floatUp 3s ease-in-out infinite alternate;
+  transition: opacity 1s ease-in-out;
 }
 
-
+@keyframes floatUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
 
 /* ======================================================
-   🌟 7. INTRO OVERLAY ANIMATION
+   🌟 INTRO ANIMATION
    ====================================================== */
 #intro {
   position: fixed;
@@ -480,7 +316,6 @@ footer {
 
 @keyframes intro-fade {
   0% { opacity: 1; visibility: visible; }
-  90% { opacity: 1; }
   100% { opacity: 0; visibility: hidden; }
 }
 
@@ -489,32 +324,10 @@ footer {
   50% { transform: translateX(120%); }
   100% { transform: translateX(120%); }
 }
-/* Smooth center fade upgrade */
-.popup-bg {
-  animation: fadeCenter 0.5s ease-in-out;
-}
 
-@keyframes fadeCenter {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 /* ======================================================
-   🌟 GOLD GLOW BORDER ANIMATION FOR CONTACT POPUP
+   🌟 GOLD GLOW BORDER FOR POPUP
    ====================================================== */
-.popup-box {
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-  border: 2px solid gold;
-  animation: glowGold 2s infinite alternate;
-}
-
 @keyframes glowGold {
   0% {
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.4),
@@ -528,42 +341,23 @@ footer {
   }
 }
 
-   /* ======================================================
-   🌟 CONTINUOUS IMAGE SLIDER (MODERN MARQUEE)
+/* ======================================================
+   🌟 RESPONSIVE DESIGN (MOBILE)
    ====================================================== */
-
-.slider-container {
-  width: 100%;
-  overflow: hidden;
-  background: black;
-  margin: 20px 0;
-}
-
-.slider-track {
-  display: flex;
-  gap: 12px;
-  will-change: transform;
-}
-
-.slider-img {
-  width: 260px;
-  height: 360px;
-  border-radius: 10px;
-  object-fit: cover;
-  flex-shrink: 0;
-  transition: transform 0.3s;
-}
-
-.slider-img:hover {
-  transform: scale(1.05);
-}
-
 @media (max-width: 768px) {
+  .navibar {
+    padding: 10px 15px;
+    border-radius: 0;
+  }
+  .left-side h1 {
+    font-size: 18px;
+  }
   .slider-img {
     width: 180px;
     height: 250px;
   }
-}
-.fact-popup {
-  transition: opacity 1s ease-in-out;
+  footer {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
