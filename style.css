@@ -527,3 +527,43 @@ footer {
     border-color: gold;
   }
 }
+
+   /* ======================================================
+   🌟 CONTINUOUS IMAGE SLIDER (MODERN MARQUEE)
+   ====================================================== */
+
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  background: black;
+  margin: 20px 0;
+}
+
+.slider-track {
+  display: flex;
+  gap: 12px;
+  will-change: transform;
+}
+
+.slider-img {
+  width: 260px;
+  height: 360px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.slider-img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .slider-img {
+    width: 180px;
+    height: 250px;
+  }
+}
+.fact-popup {
+  transition: opacity 1s ease-in-out;
+}
