@@ -34,28 +34,33 @@
     </div>
 
   </div>
-
-
-  <!-- ===============================
-     CONTACT FORM POPUP
+<!-- ===============================
+     CONTACT FORM POPUP (Google Form)
 =============================== -->
 <div class="popup-bg" id="popupForm">
   <div class="popup-box">
-    <span class="close-btn" onclick="closeForm()">&times;</span>
+    <button class="close-btn" onclick="closeForm()">&times;</button>
+
     <h2>Get In Touch</h2>
-    <p>If you want to get in touch, you can email me at 
-      <b>vishnuphotography@gmail.com</b> or fill out the contact form below.
+    <p>
+      Want to connect? You can email us at
+      <b>vishnuphotography@gmail.com</b><br><br>
+      or submit your details below 👇
     </p>
 
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="tel" name="phone" placeholder="Your Phone Number" required>
-      <textarea name="message" placeholder="Your Message..." required></textarea>
-      <button type="submit" class="submit-contact">Send</button>
-    </form>
+    <div class="form-link-container">
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLScu2-tMx_d5z8TPBoSWn_pJbAxikpEq62J88B5lwCzoM-gYYw/viewform?usp=dialog"
+        target="_blank"
+        class="submit-contact"
+        id="googleFormLink"
+      >
+        Open Google Form
+      </a>
+    </div>
   </div>
 </div>
+
 
   <!-- ===============================
        Main Sections
@@ -131,7 +136,7 @@
   <footer>
     <h3>THANK'S FOR VISITING!</h3>
     <p class="footer-note"><i>VISHNU PHOTOGRAPHY<br>credits:- vj rishi photography</i></p>
-  </footer>rtt
+  </footer>
 
   <!-- ===============================
        Scripts
