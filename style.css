@@ -334,68 +334,88 @@ footer {
 /* ======================================================
    🌟 6. RESPONSIVE DESIGN
    ====================================================== */
-/* ======================================================
-   🌟 6. RESPONSIVE DESIGN — FIXED NAVBAR ALIGNMENT
-   ====================================================== */
-@media (max-width: 768px) {
-  /* Adjust navbar for small screens */
+
+
+  /* 🟧 Navbar — Keep items in one line */
   .navibar {
-    flex-wrap: wrap; /* allow wrapping when needed */
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    background: linear-gradient(90deg, #ffcc00, #ff9900);
+    padding: 10px 15px;
+    flex-wrap: nowrap; /* Prevent items from going to next line */
   }
 
   .left-side h1 {
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size: 18px;
+    margin: 0;
+    white-space: nowrap; /* Prevent title break */
   }
 
   .right-side {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
     gap: 10px;
-    width: 100%; /* ensures full width on mobile */
+    flex-shrink: 0; /* Prevent wrapping */
   }
 
   .right-side a {
-    font-size: 16px;
-    margin-right: 0;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
   }
 
-  .right-side .contactform {
-    font-size: 15px;
-    padding: 8px 14px;
+  .contactform {
+    background: #ff7b00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   }
 
-  /* Image sections */
+  /* 🟨 Fix Image Sizes */
+  .images-wedding img,
+  .images-fashion img,
+  .pre-image1 img,
+  .pre-image2 img,
+  .birth-image1 img,
+  .birth-image2 img,
+  .kid-image img {
+    width: 100%;
+    height: 250px; /* Same height for all images */
+    object-fit: cover; /* Prevent stretching */
+    border-radius: 10px;
+    display: block;
+  }
+
+  /* 🟨 Image container spacing */
   .images-wedding,
   .images-fashion,
   .pre-image1,
   .pre-image2,
   .birth-image1,
   .birth-image2 {
-    width: 100%;
-    height: auto;
-    margin: 10px 0;
+    margin-bottom: 15px;
   }
 
+  /* Optional: For small images side-by-side */
   .kid-image {
-    width: 45%;
-    margin: 8px;
+    width: 48%;
+    margin: 1%;
   }
 
-  video {
-    width: 100%;
-    height: auto;
-  }
-
+  /* 🟫 Footer adjust */
   footer {
     font-size: 14px;
     padding: 6px;
+    text-align: center;
   }
 
+  /* 🟩 Popup adjust (if used) */
   .popup-box {
     width: 90%;
   }
