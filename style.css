@@ -330,11 +330,10 @@ footer {
   color: red;
   margin-top: 10px;
 }
-
 /* ======================================================
-   🌟 6. RESPONSIVE DESIGN
+   🌟 6. RESPONSIVE DESIGN (FULLY FIXED)
    ====================================================== */
-
+@media (max-width: 768px) {
 
   /* 🟧 Navbar — Keep items in one line */
   .navibar {
@@ -377,7 +376,7 @@ footer {
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   }
 
-  /* 🟨 Fix Image Sizes */
+  /* 🟨 Fix Image Sizes — make all equal */
   .images-wedding img,
   .images-fashion img,
   .pre-image1 img,
@@ -386,8 +385,8 @@ footer {
   .birth-image2 img,
   .kid-image img {
     width: 100%;
-    height: 250px; /* Same height for all images */
-    object-fit: cover; /* Prevent stretching */
+    height: 250px; /* Same height for all */
+    object-fit: cover;
     border-radius: 10px;
     display: block;
   }
@@ -402,7 +401,7 @@ footer {
     margin-bottom: 15px;
   }
 
-  /* Optional: For small images side-by-side */
+  /* 🟩 2 small kid images side-by-side */
   .kid-image {
     width: 48%;
     margin: 1%;
@@ -415,12 +414,11 @@ footer {
     text-align: center;
   }
 
-  /* 🟩 Popup adjust (if used) */
+  /* 🟪 Popup adjust */
   .popup-box {
     width: 90%;
   }
 }
-
 
 /* ======================================================
    🌟 7. INTRO OVERLAY ANIMATION
