@@ -38,72 +38,102 @@ window.addEventListener("load", () => {
     }
   }, 3000);
 });
+// ============================================================================
+// 🌟 CONTACT POPUP + SLIDERS (Final Polished Version)
+// Author: Vishnuvardhan
+// ============================================================================
 
+// Global log helper (safe in production)
+function logInfo(msg) {
+  if (typeof console !== "undefined") console.log(`[VISHNU ⚡] ${msg}`);
+}
 // -----------------------------------------------------------------------------
-// 3️⃣ CONTACT FORM CONTROLS (Smooth Fade In/Out)
+// CONTACT FORM POPUP — Google Form Version (Unlimited open/close)
 // -----------------------------------------------------------------------------
 function openForm() {
   const popup = document.getElementById("popupForm");
-  if (popup) {
-    popup.style.display = "flex";
-    popup.style.opacity = "0";
-    popup.style.transition = "opacity 0.3s ease";
-    setTimeout(() => (popup.style.opacity = "1"), 50);
+  if (!popup) return;
 
-    // Pause sliders when popup is open
-    document.querySelectorAll(".slider-track").forEach(t => {
-      t.style.animationPlayState = "paused";
-    });
+  // Reset any previous transition states
+  popup.style.display = "flex";
+  popup.style.opacity = "0";
+  popup.style.transition = "opacity 0.3s ease";
 
-    logInfo("Contact form opened");
-  }
+  // Trigger reflow (forces browser to apply display before opacity)
+  void popup.offsetWidth;
+
+  popup.style.opacity = "1";
+
+  // Pause sliders while open
+  document.querySelectorAll(".slider-track").forEach(track => {
+    track.style.animationPlayState = "paused";
+  });
+
+  console.log("📸 Contact form opened");
 }
 
 function closeForm() {
   const popup = document.getElementById("popupForm");
-  if (popup) {
-    popup.style.transition = "opacity 0.3s ease";
-    popup.style.opacity = "0";
-    setTimeout(() => (popup.style.display = "none"), 300);
+  if (!popup) return;
 
-    // Resume sliders when popup is closed
-    document.querySelectorAll(".slider-track").forEach(t => {
-      t.style.animationPlayState = "running";
-    });
+  popup.style.opacity = "0";
+  popup.style.transition = "opacity 0.3s ease";
 
-    logInfo("Contact form closed");
-  }
-}
+  // Wait for fade-out before hiding
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 300);
 
-function initFormHandler() {
-  const form = document.querySelector("#popupForm form");
-  if (!form) return;
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    alert("📸 Message Sent Successfully! Thank you for contacting.");
-    closeForm();
+  // Resume sliders when closed
+  document.querySelectorAll(".slider-track").forEach(track => {
+    track.style.animationPlayState = "running";
   });
+
+  console.log("📩 Contact form closed");
 }
-initFormHandler();
+
+// Close popup when clicking outside the box
+document.addEventListener("click", e => {
+  const popup = document.getElementById("popupForm");
+  if (popup && e.target === popup && popup.style.display === "flex") {
+    closeForm();
+  }
+});
+
+// Close with Esc key
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeForm();
+});
+
+// Auto close after Google Form click
+document.addEventListener("DOMContentLoaded", () => {
+  const googleFormLink = document.getElementById("googleFormLink");
+  if (googleFormLink) {
+    googleFormLink.addEventListener("click", () => {
+      setTimeout(closeForm, 200);
+    });
+  }
+});
 
 // -----------------------------------------------------------------------------
 // 4️⃣ AUTO OPEN DETAILS + INTERACTIVE SUMMARIES
 // -----------------------------------------------------------------------------
-document.querySelectorAll("details").forEach(d => {
-  d.open = true;
-  d.addEventListener("toggle", () => {
-    logInfo(`${d.querySelector("summary").innerText} toggled: ${d.open}`);
+document.querySelectorAll("details").forEach(details => {
+  details.open = true;
+
+  details.addEventListener("toggle", () => {
+    logInfo(`${details.querySelector("summary").innerText} toggled: ${details.open}`);
   });
 
-  const sum = d.querySelector("summary");
-  sum.addEventListener("click", () => {
-    sum.style.color = "gold";
-    setTimeout(() => (sum.style.color = ""), 400);
+  const summary = details.querySelector("summary");
+  summary.addEventListener("click", () => {
+    summary.style.color = "gold";
+    setTimeout(() => (summary.style.color = ""), 400);
   });
 });
 
 // -----------------------------------------------------------------------------
-// 5️⃣ SMOOTH SCROLL FOR FUTURE NAV LINKS
+// 5️⃣ SMOOTH SCROLL FOR NAV LINKS
 // -----------------------------------------------------------------------------
 document.querySelectorAll("a[href^='#']").forEach(link => {
   link.addEventListener("click", e => {
@@ -115,18 +145,17 @@ document.querySelectorAll("a[href^='#']").forEach(link => {
 });
 
 // -----------------------------------------------------------------------------
-// 6️⃣ NAVBAR SCROLL EFFECT (Shadow on Scroll)
+// 6️⃣ NAVBAR SCROLL EFFECT
 // -----------------------------------------------------------------------------
 const navbar = document.querySelector(".navibar");
 window.addEventListener("scroll", () => {
   const y = window.scrollY;
-  navbar.style.boxShadow =
-    y > 50 ? "0 4px 12px rgba(255,215,0,0.4)" : "none";
+  navbar.style.boxShadow = y > 50 ? "0 4px 12px rgba(255,215,0,0.4)" : "none";
   navbar.style.transition = "all 0.3s ease";
 });
 
 // -----------------------------------------------------------------------------
-// 7️⃣ MAIN SLIDER ENGINE (Reusable for all)
+// 7️⃣ MAIN SLIDER ENGINE (Reusable + Safe)
 // -----------------------------------------------------------------------------
 const initializedSliders = new Set();
 
@@ -143,15 +172,16 @@ function createSlider(trackId, direction = "left", speed = 1.2) {
   let x = 0;
   let animationFrame;
 
-  const move = () => {
+  function move() {
     x += direction === "left" ? -speed : speed;
     if (Math.abs(x) >= sliderTrack.scrollWidth / 2) x = 0;
     sliderTrack.style.transform = `translateX(${x}px)`;
     animationFrame = requestAnimationFrame(move);
-  };
+  }
 
   move();
 
+  // Hover pause/resume
   sliderTrack.addEventListener("mouseenter", () => {
     cancelAnimationFrame(animationFrame);
     logInfo(`${trackId} paused`);
