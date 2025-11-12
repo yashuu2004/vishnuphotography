@@ -1,75 +1,60 @@
 // ============================================================================
-// 🌟 VISHNU PHOTOGRAPHY — FULL PURE JAVASCRIPT VERSION (500+ lines)
+// 🌟 VISHNU PHOTOGRAPHY — PURE JAVASCRIPT PORTFOLIO
 // Author: Vishnuvardhan
-// Purpose: Complete interactive photo portfolio with continuous sliders,
-// contact popup, animations, and responsive behaviors — ALL in Vanilla JS.
+// Description: Fully interactive photography showcase using only Vanilla JS.
+// Features: Sliders, Popup, Animations, Theme Toggle, Keyboard Shortcuts.
 // ============================================================================
 
 // -----------------------------------------------------------------------------
 // 1️⃣ GLOBAL UTILITIES
 // -----------------------------------------------------------------------------
-
-/**
- * Logs messages in a consistent format
- * @param {string} msg
- */
 function logInfo(msg) {
   console.log(`[VISHNU PHOTO ⚡] ${msg}`);
 }
 
-/**
- * Sleep utility for delays (used in intro + transitions)
- * @param {number} ms
- */
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-/**
- * Generate random integer
- */
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-/**
- * Clamp function (limits number between min & max)
- */
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
 // -----------------------------------------------------------------------------
-// 2️⃣ INTRO ANIMATION CONTROLLER
+// 2️⃣ INTRO ANIMATION CONTROLLER (Smooth Fade Out)
 // -----------------------------------------------------------------------------
-
-async function showIntro() {
-  const intro = document.getElementById("intro");
-  if (!intro) return;
-
-  intro.style.opacity = "1";
-  intro.style.transition = "opacity 2s ease";
-
-  logInfo("Intro animation started");
-
-  await sleep(3000);
-  intro.style.opacity = "0";
-  await sleep(2000);
-  intro.style.display = "none";
-  logInfo("Intro animation ended");
-}
-
-showIntro();
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const intro = document.getElementById("intro");
+    if (intro) {
+      intro.style.transition = "opacity 0.5s ease";
+      intro.style.opacity = "0";
+      setTimeout(() => (intro.style.display = "none"), 500);
+      logInfo("Intro animation completed");
+    }
+  }, 3000);
+});
 
 // -----------------------------------------------------------------------------
-// 3️⃣ CONTACT FORM CONTROLS
+// 3️⃣ CONTACT FORM CONTROLS (Smooth Fade In/Out)
 // -----------------------------------------------------------------------------
-
 function openForm() {
   const popup = document.getElementById("popupForm");
   if (popup) {
     popup.style.display = "flex";
-    popup.style.animation = "fadeCenter 0.4s ease-in";
+    popup.style.opacity = "0";
+    popup.style.transition = "opacity 0.3s ease";
+    setTimeout(() => (popup.style.opacity = "1"), 50);
+
+    // Pause sliders when popup is open
+    document.querySelectorAll(".slider-track").forEach(t => {
+      t.style.animationPlayState = "paused";
+    });
+
     logInfo("Contact form opened");
   }
 }
@@ -77,39 +62,39 @@ function openForm() {
 function closeForm() {
   const popup = document.getElementById("popupForm");
   if (popup) {
-    popup.style.display = "none";
+    popup.style.transition = "opacity 0.3s ease";
+    popup.style.opacity = "0";
+    setTimeout(() => (popup.style.display = "none"), 300);
+
+    // Resume sliders when popup is closed
+    document.querySelectorAll(".slider-track").forEach(t => {
+      t.style.animationPlayState = "running";
+    });
+
     logInfo("Contact form closed");
   }
 }
 
-/**
- * Handles form submission
- */
 function initFormHandler() {
   const form = document.querySelector("#popupForm form");
   if (!form) return;
-
   form.addEventListener("submit", e => {
     e.preventDefault();
     alert("📸 Message Sent Successfully! Thank you for contacting.");
     closeForm();
   });
 }
-
 initFormHandler();
 
 // -----------------------------------------------------------------------------
-// 4️⃣ AUTO OPEN DETAILS & INTERACTIVE SUMMARIES
+// 4️⃣ AUTO OPEN DETAILS + INTERACTIVE SUMMARIES
 // -----------------------------------------------------------------------------
-
 document.querySelectorAll("details").forEach(d => {
   d.open = true;
-
   d.addEventListener("toggle", () => {
     logInfo(`${d.querySelector("summary").innerText} toggled: ${d.open}`);
   });
 
-  // Flash gold border when opened
   const sum = d.querySelector("summary");
   sum.addEventListener("click", () => {
     sum.style.color = "gold";
@@ -118,7 +103,7 @@ document.querySelectorAll("details").forEach(d => {
 });
 
 // -----------------------------------------------------------------------------
-// 5️⃣ SMOOTH SCROLL FOR NAV LINKS (if any future nav links added)
+// 5️⃣ SMOOTH SCROLL FOR FUTURE NAV LINKS
 // -----------------------------------------------------------------------------
 document.querySelectorAll("a[href^='#']").forEach(link => {
   link.addEventListener("click", e => {
@@ -130,9 +115,8 @@ document.querySelectorAll("a[href^='#']").forEach(link => {
 });
 
 // -----------------------------------------------------------------------------
-// 6️⃣ NAVBAR INTERACTIONS (visual feedback on scroll)
+// 6️⃣ NAVBAR SCROLL EFFECT (Shadow on Scroll)
 // -----------------------------------------------------------------------------
-
 const navbar = document.querySelector(".navibar");
 window.addEventListener("scroll", () => {
   const y = window.scrollY;
@@ -142,42 +126,32 @@ window.addEventListener("scroll", () => {
 });
 
 // -----------------------------------------------------------------------------
-// 7️⃣ MAIN SLIDER ENGINE (core logic reused for all sections)
+// 7️⃣ MAIN SLIDER ENGINE (Reusable for all)
 // -----------------------------------------------------------------------------
+const initializedSliders = new Set();
 
-/**
- * Creates an infinite horizontal slider with smooth animation
- * @param {string} trackId - Element ID of slider track
- * @param {"left"|"right"} direction - Movement direction
- * @param {number} speed - Scroll speed (pixels per frame)
- */
 function createSlider(trackId, direction = "left", speed = 1.2) {
+  if (initializedSliders.has(trackId)) return;
+  initializedSliders.add(trackId);
+
   const sliderTrack = document.getElementById(trackId);
   if (!sliderTrack) return;
 
   logInfo(`Initializing slider: ${trackId} (${direction})`);
-
-  // Duplicate for endless loop
   sliderTrack.innerHTML += sliderTrack.innerHTML;
 
   let x = 0;
   let animationFrame;
 
   const move = () => {
-    // Move left or right
     x += direction === "left" ? -speed : speed;
-
-    // Reset to start when half scrolled
     if (Math.abs(x) >= sliderTrack.scrollWidth / 2) x = 0;
-
     sliderTrack.style.transform = `translateX(${x}px)`;
     animationFrame = requestAnimationFrame(move);
   };
 
-  // Start movement
   move();
 
-  // Pause/resume on hover
   sliderTrack.addEventListener("mouseenter", () => {
     cancelAnimationFrame(animationFrame);
     logInfo(`${trackId} paused`);
@@ -201,22 +175,20 @@ window.addEventListener("load", () => {
 });
 
 // -----------------------------------------------------------------------------
-// 9️⃣ RESPONSIVE HANDLER — DYNAMIC SPEED ADJUSTMENT
+// 9️⃣ RESPONSIVE HANDLER — SPEED ADJUSTMENT
 // -----------------------------------------------------------------------------
-
 window.addEventListener("resize", () => {
   const width = window.innerWidth;
   const speed = width < 600 ? 0.8 : width < 1000 ? 1.1 : 1.3;
   document.querySelectorAll(".slider-track").forEach(track => {
     track.dataset.speed = speed;
   });
-  logInfo(`Speed adjusted to ${speed} (based on screen width ${width})`);
+  logInfo(`Speed adjusted to ${speed} (width: ${width}px)`);
 });
 
 // -----------------------------------------------------------------------------
-// 🔟 RANDOM IMAGE HIGHLIGHTER (fun animation on idle)
+// 🔟 RANDOM IMAGE HIGHLIGHTER (Fun Glow Effect)
 // -----------------------------------------------------------------------------
-
 function startRandomHighlights() {
   const imgs = document.querySelectorAll(".slider-img");
   if (!imgs.length) return;
@@ -228,11 +200,10 @@ function startRandomHighlights() {
     setTimeout(() => (img.style.boxShadow = ""), 1000);
   }, 3000);
 }
-
 startRandomHighlights();
 
 // -----------------------------------------------------------------------------
-// 11️⃣ KEYBOARD SHORTCUTS (for trainer demo 😎)
+// 11️⃣ KEYBOARD SHORTCUTS
 // -----------------------------------------------------------------------------
 document.addEventListener("keydown", e => {
   switch (e.key.toLowerCase()) {
@@ -253,60 +224,55 @@ document.addEventListener("keydown", e => {
 });
 
 // -----------------------------------------------------------------------------
-// 12️⃣ SIMPLE DARK/LIGHT MODE TOGGLE (pure JS theme)
+// 12️⃣ DARK/LIGHT MODE TOGGLE (Smooth Transition)
 // -----------------------------------------------------------------------------
 let darkMode = true;
-
 function toggleTheme() {
   darkMode = !darkMode;
+  document.body.style.transition = "background 0.4s, color 0.4s";
   document.body.style.background = darkMode ? "black" : "white";
   document.body.style.color = darkMode ? "gold" : "black";
-  logInfo(`Theme switched to ${darkMode ? "dark" : "light"}`);
+  logInfo(`Theme switched to ${darkMode ? "Dark" : "Light"}`);
 }
-
 document.body.addEventListener("dblclick", toggleTheme);
 
 // -----------------------------------------------------------------------------
-// 13️⃣ IDLE DETECTION (pause sliders when user inactive)
+// 13️⃣ IDLE DETECTION (Auto Dim + Resume)
 // -----------------------------------------------------------------------------
 let idleTimer;
 function resetIdle() {
   clearTimeout(idleTimer);
+  document.querySelectorAll(".slider-track").forEach(track => {
+    track.style.opacity = "1"; // restore when active
+  });
   idleTimer = setTimeout(() => {
-    logInfo("User inactive — sliders paused temporarily");
+    logInfo("User inactive — sliders dimmed");
     document.querySelectorAll(".slider-track").forEach(track => {
       track.style.opacity = "0.5";
     });
-  }, 20000); // 20s idle
+  }, 20000);
 }
-
 ["mousemove", "keydown", "scroll", "click"].forEach(ev =>
   window.addEventListener(ev, resetIdle)
 );
 resetIdle();
 
 // -----------------------------------------------------------------------------
-// 14️⃣ RANDOM FACT POPUP — SIMPLE VERSION (PURE JAVASCRIPT)
+// 14️⃣ RANDOM FACT POPUP (Clean Version)
 // -----------------------------------------------------------------------------
-
-// A few random facts to display one by one
 const facts = [
   "📸 Vishnu Photography has covered more than 200 events!",
-  "💡 Designed and developed by YASHWANTH GUPTA.",
-  
+  "💡 Designed and developed by Yashwanth Gupta."
 ];
 
-// Function to show one random fact in the bottom-right corner
 function showRandomFact() {
   const randomIndex = Math.floor(Math.random() * facts.length);
   const factText = facts[randomIndex];
 
-  // Create the popup element
   const popup = document.createElement("div");
   popup.className = "fact-popup";
   popup.innerText = factText;
 
-  // Add simple styles (you can move this to CSS if you want)
   popup.style.position = "fixed";
   popup.style.bottom = "20px";
   popup.style.right = "20px";
@@ -320,21 +286,12 @@ function showRandomFact() {
   popup.style.transition = "opacity 1s";
   popup.style.zIndex = "9999";
 
-  // Add it to the page
   document.body.appendChild(popup);
 
-  // Remove it after a few seconds
-  setTimeout(() => {
-    popup.style.opacity = "0";
-  }, 4000);
-
-  setTimeout(() => {
-    popup.remove();
-  }, 6500);
+  setTimeout(() => (popup.style.opacity = "0"), 4000);
+  setTimeout(() => popup.remove(), 6000);
 }
-
-// Show a random fact every 20 seconds
-setInterval(showRandomFact, 5000);
+setInterval(showRandomFact, 20000);
 
 // -----------------------------------------------------------------------------
 // 15️⃣ FINAL CONSOLE CREDITS
@@ -345,12 +302,12 @@ console.log(`
 ✨ Developer: Vishnuvardhan
 🧠 Features:
    - Infinite sliders (left/right directions)
-   - Contact popup
+   - Contact popup with smooth fade
    - Intro animation
-   - Dynamic responsiveness
+   - Responsive dynamic speed
    - Random highlights
+   - Idle detection with resume
+   - Theme toggle (double-click)
    - Keyboard controls
-   - Theme toggle
-   - Pure Vanilla JS (VISHNU PHOTOGRAPHY)
 ======================================================
 `);
