@@ -333,92 +333,116 @@ footer {
 /* ======================================================
    🌟 6. RESPONSIVE DESIGN (FULLY FIXED)
    ====================================================== */
+/* ======================================================
+   🌟 FULL MOBILE FIX (Navbar + Images)
+   ====================================================== */
 @media (max-width: 768px) {
 
-  /* 🟧 Navbar — Keep items in one line */
+  /* 🟧 Navbar — Perfect alignment and spacing */
   .navibar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(90deg, #ffcc00, #ff9900);
+    background: linear-gradient(to right, chocolate, gold);
     padding: 10px 15px;
-    flex-wrap: nowrap; /* Prevent items from going to next line */
+    flex-wrap: nowrap;
+    border-radius: 0;
   }
 
   .left-side h1 {
     font-size: 18px;
     margin: 0;
-    white-space: nowrap; /* Prevent title break */
+    white-space: nowrap;
   }
 
   .right-side {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 10px;
-    flex-shrink: 0; /* Prevent wrapping */
+    gap: 8px;
+    flex-shrink: 0;
   }
 
-  .right-side a {
-    font-size: 18px;
-    text-decoration: none;
+  .right-side a i {
+    font-size: 20px; /* equal icon size */
+    line-height: 1; /* keeps icons centered */
+    vertical-align: middle;
     color: black;
+    transition: color 0.3s;
+  }
+
+  .right-side a i:hover {
+    color: white;
   }
 
   .contactform {
-    background: #ff7b00;
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 6px;
+    background: chocolate;
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 6px 12px;
-    font-size: 14px;
     cursor: pointer;
+    font-weight: bold;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   }
 
-  /* 🟨 Fix Image Sizes — make all equal */
-  .images-wedding img,
-  .images-fashion img,
-  .pre-image1 img,
-  .pre-image2 img,
-  .birth-image1 img,
-  .birth-image2 img,
-  .kid-image img {
-    width: 100%;
-    height: 250px; /* Same height for all */
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-  }
-
-  /* 🟨 Image container spacing */
+  /* 🟨 Image Fix — All look equal on mobile */
   .images-wedding,
   .images-fashion,
   .pre-image1,
   .pre-image2,
   .birth-image1,
   .birth-image2 {
-    margin-bottom: 15px;
+    width: 100%;
+    height: auto;
+    margin: 8px 0;
   }
 
-  /* 🟩 2 small kid images side-by-side */
+  .images-wedding,
+  .images-fashion {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  .images-wedding img,
+  .images-fashion img,
+  .pre-image1,
+  .pre-image2,
+  .birth-image1,
+  .birth-image2 {
+    flex: 0 0 auto;
+    width: 70%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  /* 🧒 Kids Photos — two per row */
+  .kids-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
   .kid-image {
     width: 48%;
-    margin: 1%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
   }
 
-  /* 🟫 Footer adjust */
+  /* 🟫 Footer */
   footer {
     font-size: 14px;
-    padding: 6px;
-    text-align: center;
-  }
-
-  /* 🟪 Popup adjust */
-  .popup-box {
-    width: 90%;
+    padding: 10px;
   }
 }
+
+
 
 /* ======================================================
    🌟 7. INTRO OVERLAY ANIMATION
